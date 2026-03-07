@@ -2,10 +2,11 @@
 	interface Props {
 		color: string;
 		trait: string;
+		description: string;
 		blooming: boolean;
 	}
 
-	let { color, trait, blooming }: Props = $props();
+	let { color, trait, description, blooming }: Props = $props();
 
 	const petalCount = 6;
 	const petals = Array.from({ length: petalCount }, (_, i) => i * (360 / petalCount));
@@ -60,6 +61,7 @@
 
 	{#if blooming}
 		<p class="trait-text">{trait}</p>
+		<p class="desc-text">{description}</p>
 	{/if}
 </div>
 
@@ -126,6 +128,17 @@
 		opacity: 0;
 	}
 
+	.desc-text {
+		font-family: var(--font-body);
+		font-size: 0.75rem;
+		color: var(--sage);
+		text-align: center;
+		line-height: 1.4;
+		animation: fade-in 0.5s ease forwards;
+		animation-delay: 1.9s;
+		opacity: 0;
+	}
+
 	@keyframes draw-stem {
 		to {
 			stroke-dashoffset: 0;
@@ -157,14 +170,15 @@
 		.leaf { transform: rotate(-30deg) scale(1); }
 		.petal { transform: scale(1); }
 		.center, .center-inner { transform: scale(1); }
-		.trait-text { opacity: 1; }
+		.trait-text, .desc-text { opacity: 1; }
 
 		.blooming .stem,
 		.blooming .leaf,
 		.blooming .petal,
 		.blooming .center,
 		.blooming .center-inner,
-		.trait-text {
+		.trait-text,
+		.desc-text {
 			animation: none;
 		}
 	}

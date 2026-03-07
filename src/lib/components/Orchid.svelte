@@ -2,10 +2,11 @@
 	interface Props {
 		color: string;
 		trait: string;
+		description: string;
 		blooming: boolean;
 	}
 
-	let { color, trait, blooming }: Props = $props();
+	let { color, trait, description, blooming }: Props = $props();
 
 	function darken(hex: string): string {
 		const r = Math.max(0, parseInt(hex.slice(1, 3), 16) - 50);
@@ -109,6 +110,7 @@
 
 	{#if blooming}
 		<p class="trait-text">{trait}</p>
+		<p class="desc-text">{description}</p>
 	{/if}
 </div>
 
@@ -164,6 +166,17 @@
 		opacity: 0;
 	}
 
+	.desc-text {
+		font-family: var(--font-body);
+		font-size: 0.75rem;
+		color: var(--sage);
+		text-align: center;
+		line-height: 1.4;
+		animation: fade-in 0.5s ease forwards;
+		animation-delay: 1.9s;
+		opacity: 0;
+	}
+
 	@keyframes draw-stem {
 		to { stroke-dashoffset: 0; }
 	}
@@ -181,13 +194,14 @@
 		.stem { stroke-dashoffset: 0; }
 		.leaf { opacity: 1; }
 		.bloom { transform: scale(1); }
-		.trait-text { opacity: 1; }
+		.trait-text, .desc-text { opacity: 1; }
 
 		.blooming .stem,
 		.blooming .leaf-left,
 		.blooming .leaf-right,
 		.blooming .bloom,
-		.trait-text {
+		.trait-text,
+		.desc-text {
 			animation: none;
 		}
 	}

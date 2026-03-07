@@ -6,11 +6,12 @@
 
 	interface Props {
 		trait: string;
+		description: string;
 		color: string;
 		type: FlowerType;
 	}
 
-	let { trait, color, type }: Props = $props();
+	let { trait, description, color, type }: Props = $props();
 	let blooming = $state(false);
 
 	function handleClick() {
@@ -23,11 +24,11 @@
 <div class="seed-container">
 	{#if blooming}
 		{#if type === 'tulip'}
-			<Tulip {color} {trait} {blooming} />
+			<Tulip {color} {trait} {description} {blooming} />
 		{:else if type === 'orchid'}
-			<Orchid {color} {trait} {blooming} />
+			<Orchid {color} {trait} {description} {blooming} />
 		{:else}
-			<RoundFlower {color} {trait} {blooming} />
+			<RoundFlower {color} {trait} {description} {blooming} />
 		{/if}
 	{:else}
 		<button
@@ -40,7 +41,6 @@
 				<ellipse cx="20" cy="20" rx="9" ry="11" fill="var(--sage)" />
 				<path d="M20 14 Q22 18 20 22 Q18 18 20 14" fill="var(--dark-sage)" opacity="0.3" />
 			</svg>
-			<span class="seed-label">Antippen</span>
 		</button>
 	{/if}
 </div>
@@ -69,9 +69,4 @@
 		transform: scale(0.9);
 	}
 
-	.seed-label {
-		font-family: var(--font-body);
-		font-size: 0.75rem;
-		color: var(--sage);
-	}
 </style>
