@@ -4,12 +4,12 @@ export interface FlowerTrait {
 }
 
 export const flowers: FlowerTrait[] = [
-	{ trait: 'Stärke', color: '#E8A0BF' },
-	{ trait: 'Wärme', color: '#F4C2C2' },
-	{ trait: 'Mut', color: '#D4A5A5' },
-	{ trait: 'Anmut', color: '#C9A96E' },
-	{ trait: 'Weisheit', color: '#B2BDA0' },
-	{ trait: 'Kreativität', color: '#A7C7E7' },
-	{ trait: 'Güte', color: '#E6C9A8' },
-	{ trait: 'Lebensfreude', color: '#D4B896' }
+	{ trait: 'Stärke', color: '#E05C8A' },
+	{ trait: 'Wärme', color: '#F27A9B' },
+	{ trait: 'Mut', color: '#D94F6B' },
+	{ trait: 'Anmut', color: '#E8A62E' },
+	{ trait: 'Weisheit', color: '#6BAE5A' },
+	{ trait: 'Kreativität', color: '#5B9BD5' },
+	{ trait: 'Güte', color: '#E88B5A' },
+	{ trait: 'Lebensfreude', color: '#D4A843' }
 ];
