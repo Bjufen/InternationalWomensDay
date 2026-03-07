@@ -31,14 +31,14 @@
 </script>
 
 <svelte:head>
-	<title>Galerie — Für Tatjana</title>
+	<title>The Tatjana Exhibition — Für Tatjana</title>
 </svelte:head>
 
 <main class="gallery">
 	<a href="{base}/" class="back-link" aria-label="Zurück zur Startseite">← Zurück</a>
 
 	<header>
-		<h1>Unsere Galerie</h1>
+		<h1>The Tatjana Exhibition</h1>
 		<p class="counter">{currentIndex + 1} von {total}</p>
 	</header>
 
