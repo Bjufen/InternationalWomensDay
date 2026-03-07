@@ -18,7 +18,7 @@ export const photos: GalleryPhoto[] = [
 		src: 'photos/02.jpg',
 		alt: 'Foto 2',
 		title: 'Pure Euphorie',
-		description: 'Tatjana kann sich über die randomste Sachen einfach freuen. I mean just look at those eyes. Habt ihr jemals jemand gesagt, die so high on life war?'
+		description: 'Tatjana kann sich über die randomste Sachen einfach freuen. I mean just look at those eyes. Habt ihr jemals jemand gesehen, die so high on life war?'
 	},
 	{
 		src: 'photos/03.jpg',
