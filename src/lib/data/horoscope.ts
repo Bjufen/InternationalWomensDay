@@ -7,13 +7,13 @@ export interface Horoscope {
 }
 
 export const horoscope: Horoscope = {
-	sign: 'Dein Sternzeichen',
-	symbol: '★',
-	dateRange: 'Dein Geburtsdatum',
+	sign: 'Krebs',
+	symbol: '♋',
+	dateRange: '14. Juli 2000',
 	title: 'Dein persönliches Horoskop',
 	text: [
-		'Hier kommt dein persönliches Horoskop hin. Dieser Text ist ein Platzhalter und wird noch durch einen individuellen Text ersetzt.',
-		'Die Sterne stehen günstig für dich – das war schon immer so, denn du trägst dein eigenes Licht in dir.',
-		'Dieses Jahr bringt neue Möglichkeiten und wunderbare Überraschungen. Vertraue auf deine Stärke und dein Herz.'
+		'Heute ist ein Tag voller Spaß und schöne Gesellschaft, aber auch Mysterium. Was passiert wohl bei 100%?',
+		'Die Sterne stehen günstig für dich. Das war schon immer so, denn du bist einfach Toll.',
+		'Heute bringt wunderbare Überraschungen, aber auch angespannte Zeiten (Or maybe not? THATS FOR ME TO KNOW AND YOU TO FIND OUTTTTTT). Vertraue auf deine Stärke und dein Herz :)'
 	]
 };
