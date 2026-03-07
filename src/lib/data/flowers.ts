@@ -11,5 +11,6 @@ export const flowers: FlowerTrait[] = [
 	{ trait: 'Weisheit', color: '#6BAE5A' },
 	{ trait: 'Kreativität', color: '#5B9BD5' },
 	{ trait: 'Güte', color: '#E88B5A' },
-	{ trait: 'Lebensfreude', color: '#D4A843' }
+	{ trait: 'Lebensfreude', color: '#D4A843' },
+	{ trait: 'Zärtlichkeit', color: '#C77DB2' }
 ];

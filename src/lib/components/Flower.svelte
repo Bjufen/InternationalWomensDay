@@ -6,57 +6,79 @@
 	}
 
 	let { color, trait, blooming }: Props = $props();
-
-	const petalCount = 6;
-	const petals = Array.from({ length: petalCount }, (_, i) => i * (360 / petalCount));
 </script>
 
 <div class="flower-wrapper" class:blooming>
-	<svg viewBox="0 0 120 200" width="120" height="200" aria-hidden="true">
+	<svg viewBox="0 0 120 220" width="120" height="220" aria-hidden="true">
 		<!-- Stem -->
-		<line
-			x1="60"
-			y1="200"
-			x2="60"
-			y2="80"
+		<path
+			d="M60 220 Q58 170 60 110"
+			fill="none"
 			stroke="var(--sage)"
 			stroke-width="3"
 			stroke-linecap="round"
 			class="stem"
 		/>
 
-		<!-- Leaf -->
-		<ellipse
-			cx="48"
-			cy="150"
-			rx="12"
-			ry="6"
+		<!-- Left leaf -->
+		<path
+			d="M58 170 Q38 155 30 140 Q42 148 56 162"
 			fill="var(--sage)"
-			transform="rotate(-30 48 150)"
-			class="leaf"
+			class="leaf leaf-left"
 		/>
 
-		<!-- Flower head -->
-		<g transform="translate(60, 80)">
-			<!-- Petals -->
-			{#each petals as angle, i}
-				<g transform="rotate({angle})">
-					<ellipse
-						cx="0"
-						cy="-18"
-						rx="10"
-						ry="18"
-						fill={color}
-						opacity="0.85"
-						class="petal"
-						style="animation-delay: {0.8 + i * 0.08}s"
-					/>
-				</g>
-			{/each}
+		<!-- Right leaf -->
+		<path
+			d="M62 150 Q82 135 90 120 Q78 128 64 142"
+			fill="var(--sage)"
+			class="leaf leaf-right"
+		/>
 
-			<!-- Center -->
-			<circle cx="0" cy="0" r="8" fill="var(--gold)" class="center" />
-			<circle cx="0" cy="0" r="4" fill="var(--dark-sage)" opacity="0.3" class="center-inner" />
+		<!-- Tulip head -->
+		<g transform="translate(60, 90)">
+			<!-- Back petal (wider, behind) -->
+			<path
+				d="M-16 5 Q-18 -25 -8 -45 Q0 -55 8 -45 Q18 -25 16 5 Z"
+				fill={color}
+				opacity="0.6"
+				class="petal"
+				style="animation-delay: 0.8s"
+			/>
+
+			<!-- Left petal -->
+			<path
+				d="M-4 8 Q-22 -10 -20 -35 Q-16 -48 -6 -42 Q4 -30 2 0 Z"
+				fill={color}
+				opacity="0.85"
+				class="petal"
+				style="animation-delay: 0.9s"
+			/>
+
+			<!-- Right petal -->
+			<path
+				d="M4 8 Q22 -10 20 -35 Q16 -48 6 -42 Q-4 -30 -2 0 Z"
+				fill={color}
+				opacity="0.85"
+				class="petal"
+				style="animation-delay: 1.0s"
+			/>
+
+			<!-- Center/front petal (overlapping) -->
+			<path
+				d="M-10 6 Q-12 -18 -4 -38 Q0 -44 4 -38 Q12 -18 10 6 Z"
+				fill={color}
+				class="petal"
+				style="animation-delay: 1.1s"
+			/>
+
+			<!-- Inner highlight -->
+			<path
+				d="M-4 2 Q-5 -12 0 -28 Q5 -12 4 2 Z"
+				fill="white"
+				opacity="0.2"
+				class="petal"
+				style="animation-delay: 1.2s"
+			/>
 		</g>
 	</svg>
 
@@ -79,17 +101,10 @@
 	}
 
 	.leaf {
-		transform-origin: 48px 150px;
-		transform: rotate(-30deg) scale(0);
+		opacity: 0;
 	}
 
 	.petal {
-		transform: scale(0);
-		transform-origin: center;
-	}
-
-	.center,
-	.center-inner {
 		transform: scale(0);
 		transform-origin: center;
 	}
@@ -98,23 +113,18 @@
 		animation: draw-stem 0.8s ease forwards;
 	}
 
-	.blooming .leaf {
-		animation: grow-leaf 0.4s ease forwards;
-		animation-delay: 0.6s;
+	.blooming .leaf-left {
+		animation: fade-in 0.4s ease forwards;
+		animation-delay: 0.5s;
+	}
+
+	.blooming .leaf-right {
+		animation: fade-in 0.4s ease forwards;
+		animation-delay: 0.65s;
 	}
 
 	.blooming .petal {
 		animation: bloom-petal 0.5s ease forwards;
-	}
-
-	.blooming .center {
-		animation: pop-center 0.3s ease forwards;
-		animation-delay: 1.3s;
-	}
-
-	.blooming .center-inner {
-		animation: pop-center 0.3s ease forwards;
-		animation-delay: 1.4s;
 	}
 
 	.trait-text {
@@ -124,7 +134,7 @@
 		text-align: center;
 		font-weight: 600;
 		animation: fade-in 0.5s ease forwards;
-		animation-delay: 1.6s;
+		animation-delay: 1.5s;
 		opacity: 0;
 	}
 
@@ -134,32 +144,11 @@
 		}
 	}
 
-	@keyframes grow-leaf {
-		from {
-			transform: rotate(-30deg) scale(0);
-		}
-		to {
-			transform: rotate(-30deg) scale(1);
-		}
-	}
-
 	@keyframes bloom-petal {
 		from {
 			transform: scale(0);
 		}
 		to {
-			transform: scale(1);
-		}
-	}
-
-	@keyframes pop-center {
-		0% {
-			transform: scale(0);
-		}
-		70% {
-			transform: scale(1.2);
-		}
-		100% {
 			transform: scale(1);
 		}
 	}
@@ -176,15 +165,10 @@
 		}
 
 		.leaf {
-			transform: rotate(-30deg) scale(1);
+			opacity: 1;
 		}
 
 		.petal {
-			transform: scale(1);
-		}
-
-		.center,
-		.center-inner {
 			transform: scale(1);
 		}
 
@@ -193,10 +177,9 @@
 		}
 
 		.blooming .stem,
-		.blooming .leaf,
+		.blooming .leaf-left,
+		.blooming .leaf-right,
 		.blooming .petal,
-		.blooming .center,
-		.blooming .center-inner,
 		.trait-text {
 			animation: none;
 		}
