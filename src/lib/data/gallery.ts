@@ -3,6 +3,8 @@ export interface GalleryPhoto {
 	alt: string;
 	title: string;
 	description: string;
+	/** Optional CSS object-position override (default: 'center') */
+	objectPosition?: string;
 }
 
 export const photos: GalleryPhoto[] = [
@@ -108,6 +110,7 @@ export const photos: GalleryPhoto[] = [
 		src: 'photos/17.jpg',
 		alt: 'Foto 17',
 		title: 'End of the Tour',
-		description: 'Please leave through the gift shop. Or swipe back and enjoy the show all over again!'
+		description: 'Please leave through the gift shop. Or swipe back and enjoy the show all over again!',
+		objectPosition: 'left center'
 	}
 ];

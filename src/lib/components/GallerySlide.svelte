@@ -11,7 +11,12 @@
 
 <div class="slide">
 	<div class="photo-frame">
-		<img src="{base}/{photo.src}" alt={photo.alt} loading="lazy" />
+		<img
+			src="{base}/{photo.src}"
+			alt={photo.alt}
+			loading="lazy"
+			style={photo.objectPosition ? `object-position: ${photo.objectPosition}` : ''}
+		/>
 	</div>
 	<div class="placard">
 		<h2>{photo.title}</h2>
