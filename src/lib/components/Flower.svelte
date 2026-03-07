@@ -6,78 +6,65 @@
 	}
 
 	let { color, trait, blooming }: Props = $props();
+
+	// Darker shade for depth
+	function darken(hex: string): string {
+		const r = Math.max(0, parseInt(hex.slice(1, 3), 16) - 40);
+		const g = Math.max(0, parseInt(hex.slice(3, 5), 16) - 40);
+		const b = Math.max(0, parseInt(hex.slice(5, 7), 16) - 40);
+		return `rgb(${r},${g},${b})`;
+	}
 </script>
 
 <div class="flower-wrapper" class:blooming>
-	<svg viewBox="0 0 120 220" width="120" height="220" aria-hidden="true">
+	<svg viewBox="0 0 100 200" width="100" height="200" aria-hidden="true">
 		<!-- Stem -->
-		<path
-			d="M60 220 Q58 170 60 110"
-			fill="none"
+		<line
+			x1="50"
+			y1="200"
+			x2="50"
+			y2="105"
 			stroke="var(--sage)"
-			stroke-width="3"
+			stroke-width="3.5"
 			stroke-linecap="round"
 			class="stem"
 		/>
 
-		<!-- Left leaf -->
+		<!-- Left leaf — long curved tulip leaf -->
 		<path
-			d="M58 170 Q38 155 30 140 Q42 148 56 162"
+			d="M48 170 Q20 145 18 115 Q22 140 50 160 Z"
 			fill="var(--sage)"
 			class="leaf leaf-left"
 		/>
 
 		<!-- Right leaf -->
 		<path
-			d="M62 150 Q82 135 90 120 Q78 128 64 142"
+			d="M52 155 Q80 130 82 100 Q78 125 50 145 Z"
 			fill="var(--sage)"
 			class="leaf leaf-right"
 		/>
 
-		<!-- Tulip head -->
-		<g transform="translate(60, 90)">
-			<!-- Back petal (wider, behind) -->
-			<path
-				d="M-16 5 Q-18 -25 -8 -45 Q0 -55 8 -45 Q18 -25 16 5 Z"
-				fill={color}
-				opacity="0.6"
-				class="petal"
-				style="animation-delay: 0.8s"
-			/>
-
+		<!-- Tulip bloom -->
+		<g class="bloom">
 			<!-- Left petal -->
 			<path
-				d="M-4 8 Q-22 -10 -20 -35 Q-16 -48 -6 -42 Q4 -30 2 0 Z"
-				fill={color}
-				opacity="0.85"
-				class="petal"
-				style="animation-delay: 0.9s"
+				d="M50 108 Q28 90 24 60 Q22 40 34 28 Q42 22 50 38 Z"
+				fill={darken(color)}
+				class="petal petal-1"
 			/>
 
 			<!-- Right petal -->
 			<path
-				d="M4 8 Q22 -10 20 -35 Q16 -48 6 -42 Q-4 -30 -2 0 Z"
-				fill={color}
-				opacity="0.85"
-				class="petal"
-				style="animation-delay: 1.0s"
+				d="M50 108 Q72 90 76 60 Q78 40 66 28 Q58 22 50 38 Z"
+				fill={darken(color)}
+				class="petal petal-2"
 			/>
 
-			<!-- Center/front petal (overlapping) -->
+			<!-- Center petal (front, on top) -->
 			<path
-				d="M-10 6 Q-12 -18 -4 -38 Q0 -44 4 -38 Q12 -18 10 6 Z"
+				d="M50 108 Q34 85 32 55 Q32 35 50 25 Q68 35 68 55 Q66 85 50 108 Z"
 				fill={color}
-				class="petal"
-				style="animation-delay: 1.1s"
-			/>
-
-			<!-- Inner highlight -->
-			<path
-				d="M-4 2 Q-5 -12 0 -28 Q5 -12 4 2 Z"
-				fill="white"
-				opacity="0.2"
-				class="petal"
-				style="animation-delay: 1.2s"
+				class="petal petal-3"
 			/>
 		</g>
 	</svg>
@@ -96,17 +83,17 @@
 	}
 
 	.stem {
-		stroke-dasharray: 120;
-		stroke-dashoffset: 120;
+		stroke-dasharray: 100;
+		stroke-dashoffset: 100;
 	}
 
 	.leaf {
 		opacity: 0;
 	}
 
-	.petal {
+	.bloom {
+		transform-origin: 50px 108px;
 		transform: scale(0);
-		transform-origin: center;
 	}
 
 	.blooming .stem {
@@ -123,8 +110,9 @@
 		animation-delay: 0.65s;
 	}
 
-	.blooming .petal {
-		animation: bloom-petal 0.5s ease forwards;
+	.blooming .bloom {
+		animation: pop-bloom 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+		animation-delay: 0.8s;
 	}
 
 	.trait-text {
@@ -144,11 +132,11 @@
 		}
 	}
 
-	@keyframes bloom-petal {
-		from {
+	@keyframes pop-bloom {
+		0% {
 			transform: scale(0);
 		}
-		to {
+		100% {
 			transform: scale(1);
 		}
 	}
@@ -168,7 +156,7 @@
 			opacity: 1;
 		}
 
-		.petal {
+		.bloom {
 			transform: scale(1);
 		}
 
@@ -179,7 +167,7 @@
 		.blooming .stem,
 		.blooming .leaf-left,
 		.blooming .leaf-right,
-		.blooming .petal,
+		.blooming .bloom,
 		.trait-text {
 			animation: none;
 		}
