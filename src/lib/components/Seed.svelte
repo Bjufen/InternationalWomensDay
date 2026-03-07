@@ -48,9 +48,10 @@
 <style>
 	.seed-container {
 		display: flex;
-		justify-content: center;
-		align-items: flex-end;
-		min-height: 240px;
+		justify-content: flex-end;
+		align-items: center;
+		flex-direction: column;
+		height: 290px;
 	}
 
 	.seed {
