@@ -16,7 +16,7 @@ export const flowers: FlowerTrait[] = [
 	{ trait: 'Anmut', description: 'Beschreibung kommt hier hin.', color: '#E8A62E', type: 'tulip' },
 	{ trait: 'Weisheit', description: 'Beschreibung kommt hier hin.', color: '#6BAE5A', type: 'tulip' },
 	{ trait: 'Kreativität', description: 'Beschreibung kommt hier hin.', color: '#5B9BD5', type: 'tulip' },
-	// Snowdrops (Schneeglöckchen)
+	// Lilies
 	{ trait: 'Güte', description: 'Beschreibung kommt hier hin.', color: '#E88B5A', type: 'orchid' },
 	{ trait: 'Lebensfreude', description: 'Beschreibung kommt hier hin.', color: '#D4A843', type: 'orchid' },
 	{ trait: 'Zärtlichkeit', description: 'Beschreibung kommt hier hin.', color: '#C77DB2', type: 'orchid' }
