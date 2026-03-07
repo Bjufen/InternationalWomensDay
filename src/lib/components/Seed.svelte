@@ -51,7 +51,7 @@
 		justify-content: flex-end;
 		align-items: center;
 		flex-direction: column;
-		height: 290px;
+		min-height: 290px;
 	}
 
 	.seed {
