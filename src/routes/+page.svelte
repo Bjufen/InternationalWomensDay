@@ -11,7 +11,7 @@
 	</header>
 
 	<section class="letter">
-		<Typewriter text={letterText} />
+		<Typewriter text={letterText} speed={55} />
 	</section>
 
 	<nav class="nav-grid" aria-label="Seitenbereiche">
