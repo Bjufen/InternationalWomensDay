@@ -1,12 +1,16 @@
 <script lang="ts">
-	import Flower from './Flower.svelte';
+	import Tulip from './Tulip.svelte';
+	import RoundFlower from './RoundFlower.svelte';
+	import Orchid from './Orchid.svelte';
+	import type { FlowerType } from '$lib/data/flowers';
 
 	interface Props {
 		trait: string;
 		color: string;
+		type: FlowerType;
 	}
 
-	let { trait, color }: Props = $props();
+	let { trait, color, type }: Props = $props();
 	let blooming = $state(false);
 
 	function handleClick() {
@@ -18,7 +22,13 @@
 
 <div class="seed-container">
 	{#if blooming}
-		<Flower {color} {trait} {blooming} />
+		{#if type === 'tulip'}
+			<Tulip {color} {trait} {blooming} />
+		{:else if type === 'orchid'}
+			<Orchid {color} {trait} {blooming} />
+		{:else}
+			<RoundFlower {color} {trait} {blooming} />
+		{/if}
 	{:else}
 		<button
 			class="seed"

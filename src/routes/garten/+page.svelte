@@ -20,7 +20,7 @@
 
 	<div class="seed-grid">
 		{#each shuffled as flower (flower.trait)}
-			<Seed trait={flower.trait} color={flower.color} />
+			<Seed trait={flower.trait} color={flower.color} type={flower.type} />
 		{/each}
 	</div>
 </main>
