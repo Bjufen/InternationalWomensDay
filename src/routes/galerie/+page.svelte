@@ -55,28 +55,28 @@
 			style="transform: translateX(-{currentIndex * 100}%)"
 		>
 			{#each photos as photo (photo.src)}
-				<GallerySlide {photo} />
+				<GallerySlide {photo}>
+					<div class="controls">
+						<button
+							class="arrow-btn"
+							onclick={prev}
+							disabled={currentIndex === 0}
+							aria-label="Vorheriges Foto"
+						>
+							←
+						</button>
+						<button
+							class="arrow-btn"
+							onclick={next}
+							disabled={currentIndex === total - 1}
+							aria-label="Nächstes Foto"
+						>
+							→
+						</button>
+					</div>
+				</GallerySlide>
 			{/each}
 		</div>
-	</div>
-
-	<div class="controls">
-		<button
-			class="arrow-btn"
-			onclick={prev}
-			disabled={currentIndex === 0}
-			aria-label="Vorheriges Foto"
-		>
-			←
-		</button>
-		<button
-			class="arrow-btn"
-			onclick={next}
-			disabled={currentIndex === total - 1}
-			aria-label="Nächstes Foto"
-		>
-			→
-		</button>
 	</div>
 </main>
 
@@ -135,7 +135,7 @@
 		display: flex;
 		justify-content: center;
 		gap: 32px;
-		margin-top: 10px;
+		margin-top: 24px;
 		padding: 0 16px;
 	}
 

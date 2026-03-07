@@ -1,12 +1,14 @@
 <script lang="ts">
 	import { base } from '$app/paths';
 	import type { GalleryPhoto } from '$lib/data/gallery';
+	import type { Snippet } from 'svelte';
 
 	interface Props {
 		photo: GalleryPhoto;
+		children?: Snippet;
 	}
 
-	let { photo }: Props = $props();
+	let { photo, children }: Props = $props();
 </script>
 
 <div class="slide">
@@ -22,6 +24,9 @@
 		<h2>{photo.title}</h2>
 		<p>{photo.description}</p>
 	</div>
+	{#if children}
+		{@render children()}
+	{/if}
 </div>
 
 <style>
