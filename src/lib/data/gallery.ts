@@ -30,7 +30,7 @@ export const photos: GalleryPhoto[] = [
 		src: 'photos/04.jpg',
 		alt: 'Foto 4',
 		title: 'Resurrection',
-		description: 'Tatjana hat nun was zu essen bekommen. Sie ist jetzt für die nächste Zeit wieder in Bestform!'
+		description: 'Tatjana hat jetzt was zu essen bekommen. Sie ist für die nächste Zeit wieder in Bestform!'
 	},
 	{
 		src: 'photos/05.jpg',
